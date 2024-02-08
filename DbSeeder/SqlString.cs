@@ -49,9 +49,10 @@ namespace DbSeeder
 				speech_id int,
 				user_id bigint,
 				speech_date date,
-				speech_text text
+				speech_text text,
+				speech_vector tsvector generated always as (to_tsvector('english' ,speech_text)) stored
 			);
-
+			CREATE INDEX speeches_idx ON vu_speeches USING GIN (speech_vector);
 
 			SELECT create_distributed_table('vu_users', 'user_id');
 			SELECT create_distributed_table('vu_events', 'user_id', colocate_with => 'vu_users');
