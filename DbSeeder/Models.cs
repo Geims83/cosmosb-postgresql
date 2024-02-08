@@ -18,7 +18,16 @@ namespace DbSeeder
     {
         internal int EventId { get; set; }
         internal int UserId { get; set; }
-        internal string Type { get; set; }
+        internal int Type { get; set; }
         internal DateTime Date { get; set; }
     }
+
+    internal class Speech
+    {
+        internal int SpeechId { get; set; }
+        internal int UserId { get; set; }
+        internal DateTime Date { get; set; }
+        internal string Text { get; set; }
+    }
 }
+
